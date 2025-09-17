@@ -4,9 +4,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.ShortNavigationBar
+import androidx.compose.material3.ShortNavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.usalab.R
 import com.example.usalab.core.navigation.HomeRoute
+import com.example.usalab.core.navigation.SettingRoute
 
 enum class NavigationItem(
     val route: Any,
@@ -33,7 +33,7 @@ enum class NavigationItem(
         label = R.string.home
     ),
     SETTINGS(
-        route = HomeRoute,
+        route = SettingRoute,
         selectedIcon = R.drawable.setting,
         unselectedIcon = R.drawable.setting,
         label = R.string.setting
@@ -47,14 +47,14 @@ fun BottomNavigationBar(
     selectedItem: NavigationItem,
     modifier: Modifier = Modifier
 ) {
-    NavigationBar(
+    ShortNavigationBar(
         modifier = modifier
     ) {
         items.forEach { item ->
             val isSelected = item == selectedItem
             val icon = if (isSelected) item.selectedIcon else item.unselectedIcon
 
-            NavigationBarItem(
+            ShortNavigationBarItem(
                 selected = isSelected,
                 onClick = { onNavigate(item) },
                 icon = {
@@ -68,9 +68,7 @@ fun BottomNavigationBar(
                         text = stringResource(id = item.label),
                         style = MaterialTheme.typography.labelMedium,
                     )
-                },
-                colors = NavigationBarItemDefaults.colors(
-                )
+                }
             )
         }
     }
