@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UsaLab</string>
+    <string name="home">Home</string>
+    <string name="setting">設定</string>
 </resources>
