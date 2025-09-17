@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.example.usalab.core.AppState
 import com.example.usalab.feature.home.homeScreen
+import com.example.usalab.feature.setting.settingScreen
 
 @Composable
 fun AppNavigation(
@@ -18,5 +19,6 @@ fun AppNavigation(
         startDestination = HomeRoute,
     ) {
         homeScreen(appState = appState, modifier = modifier)
+        settingScreen(appState = appState, modifier = modifier)
     }
 }
