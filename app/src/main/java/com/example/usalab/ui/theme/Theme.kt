@@ -3,7 +3,10 @@ package com.example.usalab.ui.theme
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MotionScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -32,7 +35,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
-
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun UsaLabTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -53,6 +56,7 @@ fun UsaLabTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        motionScheme = MotionScheme.expressive(),
         content = content
     )
 }

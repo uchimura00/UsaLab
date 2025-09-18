@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,23 +37,24 @@ fun ListCard(
         modifier = modifier
             .height(100.dp)
             .fillMaxWidth()
-            .background(White)
-            .clickable(onClick = onCardClick)
+            .clickable(onClick = onCardClick),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
     ) {
         Row(
             modifier = Modifier.fillMaxHeight(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Spacer(modifier = Modifier.padding(start = 12.dp))
+            Spacer(modifier = Modifier.padding(start = 16.dp))
             Checkbox(
                 onCheckedChange = {},
                 checked = false,
                 modifier = Modifier
             )
             Column(
-                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .padding(start = 12.dp, top = 7.dp, end = 12.dp, bottom = 7.dp)
+                    .padding(start = 16.dp, top = 6.dp, end = 12.dp, bottom = 6.dp)
             ) {
                 Text(
                     text = genre,

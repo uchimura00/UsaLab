@@ -10,6 +10,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.usalab.core.navigation.HomeRoute
+import com.example.usalab.core.navigation.MemoRoute
 import com.example.usalab.core.ui.NavigationItem
 import com.example.usalab.core.utill.AppStateModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -62,6 +63,10 @@ class AppState(
 
     fun navigateToHome() {
         navController.navigate(HomeRoute)
+    }
+
+    fun navigateToMemo() {
+        navController.navigate(MemoRoute)
     }
 
     fun navigatePopUp() {

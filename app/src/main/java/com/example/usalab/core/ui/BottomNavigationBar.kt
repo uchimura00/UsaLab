@@ -6,6 +6,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ShortNavigationBar
 import androidx.compose.material3.ShortNavigationBarItem
+import androidx.compose.material3.ShortNavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -48,7 +49,8 @@ fun BottomNavigationBar(
     modifier: Modifier = Modifier
 ) {
     ShortNavigationBar(
-        modifier = modifier
+        containerColor = MaterialTheme.colorScheme.surface,
+        modifier = modifier,
     ) {
         items.forEach { item ->
             val isSelected = item == selectedItem
