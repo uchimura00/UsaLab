@@ -10,10 +10,9 @@ fun NavGraphBuilder.memoScreen(
     appState: AppState,
     modifier: Modifier = Modifier,
 ) {
-    composable<MemoRoute> { it ->
+    composable<MemoRoute> {
         MemoScreen(
             appState = appState,
-            memoId = it.arguments?.getInt("memoId") ?: 0,
             modifier = modifier
         )
     }

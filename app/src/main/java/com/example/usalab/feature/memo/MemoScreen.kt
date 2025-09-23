@@ -39,6 +39,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.example.usalab.R
 import com.example.usalab.core.AppState
+import com.example.usalab.core.ScreenState
 import com.example.usalab.core.ui.UsaTextField
 import com.example.usalab.ui.theme.UsaLabTheme
 
@@ -46,7 +47,6 @@ import com.example.usalab.ui.theme.UsaLabTheme
 @Composable
 fun MemoScreen(
     appState: AppState,
-    memoId: Int,
     modifier: Modifier = Modifier,
     viewModel: MemoViewModel = hiltViewModel()
 ) {
@@ -94,24 +94,25 @@ fun MemoScreen(
         },
         modifier = modifier
     ) { innerPadding ->
-        val memo by viewModel.getMemo(memoId).collectAsState(initial = null)
-        if (memo == null) {
-            MemoTemplate(
-                uiState = uiState,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = innerPadding.calculateTopPadding()),
-                eventHandler = {
-                    eventHandler(it)
-                },
-            )
-        } else {
-            MemoTemplateDetail(
-                uiState = uiState,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = innerPadding.calculateTopPadding()),
-            )
+        if (uiState.screenState is ScreenState.Success) {
+            if (uiState.memoId == null) {
+                MemoTemplate(
+                    uiState = uiState,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPadding.calculateTopPadding()),
+                    eventHandler = {
+                        eventHandler(it)
+                    },
+                )
+            } else {
+                MemoTemplateDetail(
+                    uiState = uiState,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPadding.calculateTopPadding()),
+                )
+            }
         }
     }
 }
@@ -138,7 +139,9 @@ fun MemoTemplate(
             text = uiState.title
         )
         UsaTextField(
-            modifier = Modifier.padding(vertical = 8.dp).wrapContentHeight(),
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .wrapContentHeight(),
             maxLines = 1,
             testStyle = MaterialTheme.typography.labelSmall,
             placeholder = R.string.toDoTime,
@@ -150,7 +153,7 @@ fun MemoTemplate(
         })
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(start = 20.dp, end =40.dp, top = 20.dp, bottom = 20.dp),
+            contentPadding = PaddingValues(start = 20.dp, end = 40.dp, top = 20.dp, bottom = 20.dp),
             pageSpacing = 6.dp,
             modifier = Modifier.aspectRatio(1f)
         ) { page ->
@@ -169,7 +172,10 @@ fun MemoTemplate(
             }
         }
         UsaTextField(
-            modifier = Modifier.padding(vertical = 16.dp).wrapContentHeight().height(200.dp),
+            modifier = Modifier
+                .padding(vertical = 16.dp)
+                .wrapContentHeight()
+                .height(200.dp),
             maxLines = 5,
             testStyle = MaterialTheme.typography.bodyLarge,
             placeholder = R.string.toDoText,
@@ -213,7 +219,9 @@ fun MemoTemplateDetail(
             text = uiState.title
         )
         Text(
-            modifier = Modifier.padding(vertical = 8.dp).wrapContentHeight(),
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .wrapContentHeight(),
             maxLines = 1,
             style = MaterialTheme.typography.labelSmall,
             text = uiState.time
@@ -223,7 +231,7 @@ fun MemoTemplateDetail(
         })
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(start = 20.dp, end =40.dp, top = 20.dp, bottom = 20.dp),
+            contentPadding = PaddingValues(start = 20.dp, end = 40.dp, top = 20.dp, bottom = 20.dp),
             pageSpacing = 6.dp,
             modifier = Modifier.aspectRatio(1f)
         ) { page ->
@@ -242,7 +250,10 @@ fun MemoTemplateDetail(
             }
         }
         Text(
-            modifier = Modifier.padding(vertical = 16.dp).wrapContentHeight().height(200.dp),
+            modifier = Modifier
+                .padding(vertical = 16.dp)
+                .wrapContentHeight()
+                .height(200.dp),
             maxLines = 5,
             style = MaterialTheme.typography.bodyLarge,
             text = uiState.text
