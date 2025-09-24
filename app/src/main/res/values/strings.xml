@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">UsaLab</string>
+
+    // HomeScreen
     <string name="home">Home</string>
+    // SettingsScreen
     <string name="setting">設定</string>
+    //
     <string name="title">タイトル</string>
     <string name="toDoTime">時間</string>
     <string name="toDoText">本文</string>

@@ -2,6 +2,7 @@ package com.example.usalab.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.usalab.core.database.entity.MemoEntity
 import com.example.usalab.domain.useCase.MemoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,6 +27,20 @@ class HomeViewModel @Inject constructor(
                     )
                 }
             }
+        }
+    }
+
+    fun deleteEnabledChange() {
+        _uiState.update {
+            it.copy(
+                deleteEnabled = !it.deleteEnabled
+            )
+        }
+    }
+
+    fun deleteMemo(memo: MemoEntity) {
+        viewModelScope.launch {
+            memoUseCase.deleteItem(memo)
         }
     }
 }

@@ -40,6 +40,7 @@ import coil3.compose.AsyncImage
 import com.example.usalab.R
 import com.example.usalab.core.AppState
 import com.example.usalab.core.ScreenState
+import com.example.usalab.core.ui.TopBar
 import com.example.usalab.core.ui.UsaTextField
 import com.example.usalab.ui.theme.UsaLabTheme
 
@@ -80,16 +81,10 @@ fun MemoScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = "お世話登録") },
-                navigationIcon = {
-                    IconButton(onClick = { appState.navigateToHome() }) {
-                        Icon(
-                            painter = painterResource(R.drawable.home),
-                            contentDescription = null,
-                        )
-                    }
-                },
+            TopBar(
+                text = R.string.home,
+                icon = R.drawable.arrow_back,
+                onClick = { appState.navigateToHome() },
             )
         },
         modifier = modifier
