@@ -7,4 +7,4 @@ data object HomeRoute
 @Serializable
 data object SettingRoute
 @Serializable
-data object MemoRoute
+data class MemoRoute(val memoId: Int? = null)

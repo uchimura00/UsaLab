@@ -65,8 +65,8 @@ class AppState(
         navController.navigate(HomeRoute)
     }
 
-    fun navigateToMemo() {
-        navController.navigate(MemoRoute)
+    fun navigateToMemo(id: Int? = null) {
+        navController.navigate(MemoRoute(id))
     }
 
     fun navigatePopUp() {

@@ -8,7 +8,7 @@ import com.example.usalab.core.navigation.MemoRoute
 
 fun NavGraphBuilder.memoScreen(
     appState: AppState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     composable<MemoRoute> {
         MemoScreen(
