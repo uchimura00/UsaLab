@@ -7,6 +7,9 @@ plugins {
 
     // Hilt plugin for dependency injection
     id("com.google.dagger.hilt.android") version "2.57.1" apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
+    alias(libs.plugins.android.lint) apply false
 }
 
 buildscript {
