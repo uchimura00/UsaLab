@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "UsaLab"
 include(":app")
+include(":shared")
